@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# initdb -A trust -D /tmp/mydb
+initdb -D /tmp/mydb
+
+pg_ctl -D /tmp/mydb -l ./mydb.log -o "--unix_socket_directories='/tmp'" start
+
+createdb -h /tmp mydb
